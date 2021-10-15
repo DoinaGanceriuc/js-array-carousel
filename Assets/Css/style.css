@@ -9,3 +9,29 @@
   width: 80%;
   margin: 2rem auto;
 }
+
+/* utility */
+img {
+  display: block;
+  width: 100%;
+}
+.row {
+  display: flex;
+  height: 750px;
+}
+.w_80 {
+  width: 80%;
+  height: 100%;
+}
+.w_20 {
+  width: 20%;
+}
+
+.col.w_20 img {
+  height: 150px;
+}
+
+/* jumbo */
+#jumbo {
+  height: 100%;
+}

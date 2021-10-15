@@ -39,3 +39,7 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ];
 console.log(text);
+
+// mostrare immagine a video
+let jumboElement = document.getElementById("jumbo");
+/* jumboElement.innerHTML = items[0]; */
