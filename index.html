@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carosello</title>
         <link rel="stylesheet" href="./Assets/Css/style.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+            integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="container">
@@ -13,14 +17,37 @@
                 <div class="col w_80">
                     <img id="jumbo" src="./img/01.jpg" alt="">
                     <!-- /#jumbo -->
+                    <div class="text">
+                        Lorem ipsum dolor sit amet.
+                    </div>
                 </div>
                 <!-- /.col -->
                 <div class="col w_20">
-                    <img src="./img/01.jpg" alt="">
-                    <img src="./img/02.jpg" alt="">
-                    <img src="./img/03.jpg" alt="">
-                    <img src="./img/04.jpg" alt="">
-                    <img src="./img/05.jpg" alt="">
+                    <div class="chrevron_up">
+
+                        <img src="./img/01.jpg" alt="">
+                        <div class="hidden">
+                            <i class="fas fa-chevron-circle-up fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="middle_img">
+                        <img src="./img/02.jpg" alt="">
+                        <div class="bg_dark"></div>
+                    </div>
+                    <div class="middle_img">
+                        <img src="./img/03.jpg" alt="">
+                        <div class="bg_dark"></div>
+                    </div>
+                    <div class="middle_img">
+                        <img src="./img/04.jpg" alt="">
+                        <div class="bg_dark"></div>
+                    </div>
+                    <div class="chrevron_down">
+                        <img src="./img/05.jpg" alt="">
+                        <div class="hidden">
+                            <i class="fas fa-chevron-circle-down fa-2x"></i>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>
