@@ -1,10 +1,11 @@
-/* creare un carosello. Al click dell'utente sulle frecce verso l'alto o verso il basso, l'immagine attiva diventa visibile in formato grande a sinistra e nel suo angolo in basso a destra dovranno essere aggiunti i relativi titolo e testo. Allo stesso tempo nelle miniature l'immagine attiva dovrà apparire in evidenza rispetto alle altre. */
+/*  Al click dell'utente sulle frecce verso l'alto o verso il basso, l'immagine attiva diventa visibile in formato grande a sinistra e nel suo angolo in basso a destra dovranno essere aggiunti i relativi titolo e testo. Allo stesso tempo nelle miniature l'immagine attiva dovrà apparire in evidenza rispetto alle altre. */
 
 /* Strumenti
 -array
 -eventListener
 -for
--getElementById/querySelector
+-getElementById/querySelector/insertAdjacentHTML/getElementsByClassName
+-if
 
 */
 
@@ -38,47 +39,85 @@ const text = [
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ];
-
-// mostrare immagine a video
+// variabili
 let jumboElement = document.getElementById("jumbo");
-jumboElement.src = items[0];
+let rightImgElement = document.getElementById("right_img");
+let contatore = 0;
 
-let imgOneElement = document.getElementById("lake");
-imgOneElement.src = items[0];
+// creare un carosello. Mostrare immagine a video
+for (let i = 0; i < items.length; i++) {
+   /*  let singleImg = items[i]; */
+   
+    jumboElement.insertAdjacentHTML("beforeend", 
+    `<div class="jumbo_container">
+     <img class="img_jumbo" src="${items[i]}" alt="">
+    <div class="text">
+    <p class ="title"> ${title[i]} </p>
+    <p class ="text_item">${text[i]}</p>
+    </div>
+    </div>`
+    )
+    
+    
+    rightImgElement.insertAdjacentHTML("beforeend",  `
+    <div class="single_img">
+    <img class="hidden" src="${items[i]}" alt="">
+    </div>
+    `
+)
 
+}
 
-let imgTwoElement = document.getElementById("sweden");
-imgTwoElement.src = items[1];
+document.getElementsByClassName("jumbo_container")[contatore].className += " visible";
+document.getElementsByClassName("hidden")[contatore].className += " visible_right_img";
+/* console.log(contatore); */
 
-let imgThreeElement = document.getElementById("london");
-imgThreeElement.src = items[2];
-
-let imgFourElement = document.getElementById("city");
-imgFourElement.src = items[3];
-
-let imgFiveElement = document.getElementById("paradise");
-imgFiveElement.src = items[4];
-
-let imagesElement = [jumboElement, imgOneElement, imgTwoElement, imgThreeElement, imgFourElement, imgFiveElement];
-
-
-
-
+// evento click up
 document.getElementById("up").addEventListener("click", function(){
 
-    console.log("cliccato");
+    //decrementa il contatore prima
+    if (contatore > 0) {
+    --contatore;
+   /*  console.log(contatore); */
 
+    // incrementa quando arriva all'inizio
+    } else if (contatore <= items.length ){
+        contatore = 3;
+        ++contatore;
+        /* console.log(contatore); */
+    }
 
+    document.querySelector(".visible").classList.remove("visible");
+    document.getElementsByClassName("jumbo_container")[contatore].className += " visible";
+    /* console.log(document.querySelector(".visible").classList); */
 
-     for (let i = 0; i< imagesElement.length; i++) {
-        const singleImage = imagesElement[i];
-        console.log(singleImage);
-    
-}
+    document.querySelector(".visible_right_img").classList.remove("visible_right_img");
+   document.getElementsByClassName("hidden")[contatore].className += " visible_right_img";
      
-    /*  document.getElementById("jumbo").src = singleImg;*/
-    
-     /* console.log(singleImg);  */
+ }
+)
+
+// evento click down
+document.getElementById("down").addEventListener("click", function(){  
+    //incrementa il contatore prima
+    if (contatore < items.length -1){
+        ++contatore;
+       /*  console.log(contatore); */
+    // decrementa quando arriva alla fine
+    } else if (contatore <= items.length) {
+        contatore = 1       
+        --contatore;
+        /* console.log(contatore); */
+       
+    }
+     
+
+    document.querySelector(".visible").classList.remove("visible");
+    document.getElementsByClassName("jumbo_container")[contatore].className += " visible";
+    /* console.log(document.querySelector(".visible").classList); */
+
+    document.querySelector(".visible_right_img").classList.remove("visible_right_img");
+   document.getElementsByClassName("hidden")[contatore].className += " visible_right_img";
      
  }
 )
